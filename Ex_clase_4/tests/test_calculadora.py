@@ -45,6 +45,9 @@ def numeros():
 @pytest.fixture
 def numeros_float():
     return (10.5, 5.5)
+@pytest.fixture
+def numeros_negativos():
+    return (-10.5, -5)
 
 #@pytest.mark.smoke
 def test_sumar_negativos(numeros):
@@ -61,9 +64,9 @@ def test_sumar_floats(numeros_float):
     a, b = numeros_float
     assert sumar(a, b) == 16
    
-def test_restar_negativos(numeros):
-    a, b = numeros
-    assert restar(-a, -b) == -5 
+def test_restar_negativos(numeros_negativos):
+    a, b = numeros_negativos
+    assert restar(a, b) == -5 
 
 def test_restar(numeros):
     a, b = numeros
