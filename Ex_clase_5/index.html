@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Retro con Sonido</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="calculadora-retro">
+    <h1>Calculadora Retro</h1>
+
+    <div class="pantalla-retro">
+      <input type="text" class="input-retro" id="num1" placeholder="Número 1">
+      <input type="text" class="input-retro" id="num2" placeholder="Número 2">
+    </div>
+
+    <div class="teclado-retro">
+      <button id="suma_btn" onclick="sumar()">+</button>
+      <button id="restar_btn" onclick="restar()">−</button>
+      <button id="multiplicar_btn" onclick="multiplicar()">×</button>
+      <button id="dividir_btn" onclick="dividir()">/</button>
+      <button id="modulo_btn" onclick="modulo()">%</button>
+      <button id="potencia_btn" onclick="potencia()">^</button>
+      <button id="limpiar_btn" onclick="limpiar()">C</button>
+      <button id="borrar_btn" onclick="borrar()">←</button>
+      <button id="resultado_btn" onclick="resultado()">=</button>
+    </div>
+
+    <div class="resultado-retro" id="resultado_display">Resultado</div>
+
+   
+    <audio id="tecla-sonido" src="click-retro.wav" preload="auto"></audio>
+  </div>
+
+  <script>
+    
+    const sonido = document.getElementById("tecla-sonido");
+    const botones = document.querySelectorAll(".teclado-retro button");
+
+    botones.forEach(boton => {
+      boton.addEventListener("click", () => {
+        sonido.currentTime = 0; // Reinicia el sonido si se hace clic rápido
+        sonido.play();
+      });
+    });
+  </script>
+</body>
+</html>
