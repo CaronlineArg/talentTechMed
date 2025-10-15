@@ -9,6 +9,7 @@ driver = webdriver.Chrome(options=options)
 driver.implicitly_wait(5) 
 
 try:
+   #login
     driver.get('https://www.saucedemo.com')
 
     driver.find_element(By.ID, 'user-name').send_keys('standard_user')
@@ -16,7 +17,7 @@ try:
     driver.find_element(By.CSS_SELECTOR, 'input[type="submit"]').click()
 
     assert '/inventory.html' in driver.current_url
-
+   #explorar inventario
     titulo = driver.find_element(By.CSS_SELECTOR,
         'div.header_secondary_container .title').text
 
@@ -27,7 +28,7 @@ try:
     print(f'Se encontraron {len(productos)} productos.')
 
     productos[0].find_element(By.TAG_NAME, 'button').click()
-
+ #carrito
     badge = driver.find_element(By.CLASS_NAME, 'shopping_cart_badge').text
     assert badge == '1'
     print('Carrito OK →', badge)
